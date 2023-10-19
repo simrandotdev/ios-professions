@@ -9,6 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    let bankeyLabel = UILabel()
     let loginView = LoginView()
     let signInButton = UIButton()
     let errorMessageLabel = UILabel()
@@ -55,6 +56,13 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     private func style() {
+        
+        // `bankeyLabel` styling
+        bankeyLabel.translatesAutoresizingMaskIntoConstraints = false
+        bankeyLabel.textAlignment = .center
+        bankeyLabel.font = .systemFont(ofSize: 48, weight: .heavy)
+        bankeyLabel.text = "Bankey"
+        
         // `loginView` styling
         loginView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -77,6 +85,7 @@ extension LoginViewController {
         view.addSubview(loginView)
         view.addSubview(signInButton)
         view.addSubview(errorMessageLabel)
+        view.addSubview(bankeyLabel)
         
         // `loginView` constraints
         NSLayoutConstraint.activate([
@@ -97,6 +106,13 @@ extension LoginViewController {
             errorMessageLabel.leadingAnchor.constraint(equalTo: signInButton.leadingAnchor),
             errorMessageLabel.trailingAnchor.constraint(equalTo: signInButton.trailingAnchor),
             errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: signInButton.bottomAnchor, multiplier: 2)
+        ])
+        
+        // `bankeyLabel` constraints
+        NSLayoutConstraint.activate([
+            loginView.topAnchor.constraint(equalToSystemSpacingBelow: bankeyLabel.bottomAnchor, multiplier: 4),
+            bankeyLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
+            bankeyLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
         ])
     }
 }
