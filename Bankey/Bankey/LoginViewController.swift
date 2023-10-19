@@ -12,6 +12,35 @@ class LoginViewController: UIViewController {
     let loginView = LoginView()
     let signInButton = UIButton()
     let errorMessageLabel = UILabel()
+    
+    // Local properties to access username and password text fields from `LoginView` conveniently
+    var username: String? {
+        get {
+            return loginView.usernameTextField.text
+        }
+        set {
+            loginView.usernameTextField.text = newValue
+        }
+    }
+    
+    var password: String? {
+        get {
+            return loginView.passwordTextField.text
+        }
+        set {
+            loginView.passwordTextField.text = newValue
+        }
+    }
+    
+    var errorMessage: String? {
+        get {
+            return errorMessageLabel.text
+        }
+        set {
+            errorMessageLabel.isHidden = newValue == nil || newValue == ""
+            errorMessageLabel.text = newValue
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +108,31 @@ extension LoginViewController {
 extension LoginViewController {
     
     @objc func signInTapped() {
+        // if `errorMessageLabel` is visible before, lets hide it first
+        errorMessage = nil
+        login()
+    }
+    
+    private func login() {
+        guard let username, let password else {
+            assertionFailure("Username / password should never be nil")
+            return
+        }
         
+        if username.isEmpty || password.isEmpty {
+            configureView(withMessage: "Username / password cannot be blank.")
+            return
+        }
+        
+        if username == "Kevin" && password == "Welcome" {
+            signInButton.configuration?.showsActivityIndicator = true
+        } else {
+            configureView(withMessage: "Incorrect username / password.")
+        }
+    }
+    
+    private func configureView(withMessage message: String) {
+        errorMessageLabel.isHidden = false
+        errorMessageLabel.text = message
     }
 }
