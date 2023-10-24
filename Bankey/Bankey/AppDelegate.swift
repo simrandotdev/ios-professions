@@ -79,6 +79,6 @@ extension AppDelegate {
 
 extension AppDelegate: LogoutDelegate {
     func didLogout() {
-        setRootViewController(LoginViewController())
+        setRootViewController(loginViewController)
     }
 }
