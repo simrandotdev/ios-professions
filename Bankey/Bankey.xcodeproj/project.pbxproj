@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B12A537A2AEAAFDD00430661 /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12A53792AEAAFDD00430661 /* AccountSummaryViewController.swift */; };
 		B12B47862AE95A3400F65FC1 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12B47852AE95A3400F65FC1 /* UIViewController+Utils.swift */; };
 		B12B47882AE95B4F00F65FC1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12B47872AE95B4F00F65FC1 /* MainViewController.swift */; };
 		B161F3B42AE028FF00019B11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B161F3B32AE028FF00019B11 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B12A53792AEAAFDD00430661 /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
 		B12B47852AE95A3400F65FC1 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
 		B12B47872AE95B4F00F65FC1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B161F3B02AE028FF00019B11 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B12A53782AEAAFBE00430661 /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				B12A53792AEAAFDD00430661 /* AccountSummaryViewController.swift */,
+			);
+			name = AccountSummary;
+			sourceTree = "<group>";
+		};
 		B161F3A72AE028FF00019B11 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +79,7 @@
 				B161F3B32AE028FF00019B11 /* AppDelegate.swift */,
 				B161F3CB2AE09F0000019B11 /* Login */,
 				B178ABD92AE2C964004C2897 /* Onboarding */,
+				B12A53782AEAAFBE00430661 /* AccountSummary */,
 				B1FD36E52AE818AC00B5AE42 /* Utils */,
 				B161F3CA2AE09EE900019B11 /* Files */,
 				B12B47872AE95B4F00F65FC1 /* MainViewController.swift */,
@@ -191,6 +202,7 @@
 				B161F3B82AE028FF00019B11 /* LoginViewController.swift in Sources */,
 				B178ABDF2AE2CEC6004C2897 /* OnboardingViewController.swift in Sources */,
 				B12B47882AE95B4F00F65FC1 /* MainViewController.swift in Sources */,
+				B12A537A2AEAAFDD00430661 /* AccountSummaryViewController.swift in Sources */,
 				B161F3B42AE028FF00019B11 /* AppDelegate.swift in Sources */,
 				B178ABDB2AE2C9A1004C2897 /* OnboardingContainerViewController.swift in Sources */,
 			);
