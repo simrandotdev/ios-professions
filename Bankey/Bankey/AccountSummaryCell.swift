@@ -9,6 +9,25 @@ import UIKit
 
 class AccountSummaryCell: UITableViewCell {
     
+    enum AccountType: String {
+        case Banking
+        case CreditCard
+        case Investment
+    }
+    
+    struct ViewModel {
+        let accountType: AccountType
+        let accountName: String
+        let balance: Decimal
+        
+        var balanceAsAttributedString: NSAttributedString {
+            let cf = NumberFormatter()
+            cf.numberStyle = .currency
+            print("✅ ", cf.attributedString(for: balance) ?? .init(string: "0.00"))
+            return cf.attributedString(for: balance) ?? .init(string: "0.00")
+        }
+    }
+    
     let typeLabel = UILabel()
     let dividerView = UIView()
     let nameLabel = UILabel()
@@ -116,5 +135,30 @@ extension AccountSummaryCell {
         rootString.append(centString)
         
         return rootString
+    }
+}
+
+
+extension AccountSummaryCell {
+    
+    func configure(with vm: ViewModel) {
+        
+        typeLabel.text = vm.accountType.rawValue
+        nameLabel.text = vm.accountName
+        
+        switch vm.accountType {
+        case .Banking:
+            dividerView.backgroundColor = appColor
+            balanceLabel.text = "Current balance"
+            break
+        case .CreditCard:
+            dividerView.backgroundColor = .systemOrange
+            balanceLabel.text = "Balance"
+            break
+        case .Investment:
+            dividerView.backgroundColor = .systemPurple
+            balanceLabel.text = "Value"
+            break
+        }
     }
 }
