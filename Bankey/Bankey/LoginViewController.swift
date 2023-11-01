@@ -52,11 +52,22 @@ class LoginViewController: UIViewController {
             errorMessageLabel.text = newValue
         }
     }
+    
+    // animation
+    private var leadingEdgeOnScreen: CGFloat = 16
+    private var leadingEdgeOffScreen: CGFloat = -1000
+    
+    var titleLeadingAnchor: NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
+        animate()
     }
 }
 
@@ -75,6 +86,7 @@ extension LoginViewController {
         
         // `loginView` styling
         loginView.translatesAutoresizingMaskIntoConstraints = false
+        loginView.alpha = 0
         
         // `signInButton` styling
         signInButton.translatesAutoresizingMaskIntoConstraints = false
@@ -121,9 +133,11 @@ extension LoginViewController {
         // `bankeyLabel` constraints
         NSLayoutConstraint.activate([
             loginView.topAnchor.constraint(equalToSystemSpacingBelow: bankeyLabel.bottomAnchor, multiplier: 4),
-            bankeyLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
             bankeyLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
         ])
+        
+        titleLeadingAnchor = bankeyLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leadingEdgeOffScreen)
+        titleLeadingAnchor?.isActive = true
     }
 }
 
@@ -164,5 +178,19 @@ extension LoginViewController {
     private func configureView(withMessage message: String) {
         errorMessageLabel.isHidden = false
         errorMessageLabel.text = message
+    }
+    
+    private func animate() {
+        let animator1 = UIViewPropertyAnimator(duration: 1.0, curve: .easeInOut) {
+            self.titleLeadingAnchor?.constant = self.leadingEdgeOnScreen
+            self.view.layoutIfNeeded()
+        }
+        
+        let animator2 = UIViewPropertyAnimator(duration: 1.0, curve: .easeInOut) {
+            self.loginView.alpha = 1
+        }
+        
+        animator1.startAnimation()
+        animator2.startAnimation(afterDelay: 0.66)
     }
 }
